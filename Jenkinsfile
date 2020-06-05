@@ -4,13 +4,13 @@ pipeline {
     agent {
         
         docker {
-            image 'node:12.18-alphine'
+            image 'node:12.17-alphine'
           
         }
     }
-    environment {
-        CI = 'true'
-    }
+    // environment {
+    //     CI = 'true'
+    // }
     stages {
         stage('Build') {
             steps {
