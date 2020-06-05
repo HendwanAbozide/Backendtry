@@ -1,12 +1,12 @@
 pipeline {
 
-//    agent any
-    agent {
+    agent any
+    // agent {
         
-        docker {
-            image 'node:12.17-alphine'
+    //     docker {
+    //         image 'node:12.17-alphine'
           
-        }
+    //     }
     }
     // environment {
     //     CI = 'true'
