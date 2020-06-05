@@ -7,7 +7,7 @@ pipeline {
     //         image 'node:12.17-alphine'
           
     //     }
-    }
+    
     // environment {
     //     CI = 'true'
     // }
@@ -50,7 +50,6 @@ pipeline {
 
     }
 
-
-
 }
+
 
