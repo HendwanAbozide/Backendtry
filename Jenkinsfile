@@ -12,10 +12,9 @@ pipeline {
     stages {
 
         stage('Cloning our BackEnd Git') {
-
-            echo 'Cloning the backend repo..'
             
             steps {
+
                 git 'https://github.com/HendwanAbozide/Front-End.git'
              }
         }
@@ -32,7 +31,6 @@ pipeline {
                 }
 
             }
-
 
          }
         stage('Push Docker Image'){
