@@ -1,55 +1,70 @@
 pipeline {
 
+    environment {
+    registry = "hendwanabozide123/back-end"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+    }
+
     agent any
-    // agent {
-        
-    //     docker {
-    //         image 'node:12.17-alphine'
-          
-    //     }
-    
-    // environment {
-    //     CI = 'true'
-    // }
+
+
     stages {
-        stage('Build') {
+
+        stage('Cloning our BackEnd Git') {
+
+            echo 'Cloning the backend repo..'
+            
             steps {
-                sh 'npm install'
-            }
+                git 'https://github.com/HendwanAbozide/Front-End.git'
+             }
         }
-        // stage('Test') {
-        //     steps {
-        //         sh './test.sh'
-        //     }
-        // }
-        // stage('Deliver') {
-        //     steps {
-        //         sh 'npm run build'
-        //         //input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                
-        //     }
-        // }
-        // stage('start') {
-        //     steps {
-        //         sh 'npm start'
-        //     }
-        // }
+
+
+
+        stage('Build Docker Image'){
+            steps{
+
+                script{
+
+                    dockerImage=docker.build registry + ":$BUILD_TAG"
+
+                }
+
+            }
+
+
+         }
+        stage('Push Docker Image'){
+            steps{
+
+                script{
+
+                    docker.withRegistry('','dockerhub'){
+
+                        dockerImage.push();
+                    }
+                }
+            }
+
+        }
     }
 
     post{
 
         success{
 
-            echo 'yesssssss'
+            echo 'Build is successful!'
         }
 
         failure {
 
-            echo 'noooooo'
+
+            echo 'Build failed!'
         }
 
     }
 
-}
 
+}
 
