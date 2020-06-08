@@ -15,7 +15,7 @@ pipeline {
             
             steps {
 
-                git 'https://github.com/HendwanAbozide/Front-End.git'
+                git 'https://github.com/HendwanAbozide/Backendtry.git'
              }
         }
 
